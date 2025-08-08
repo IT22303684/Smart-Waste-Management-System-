@@ -12,7 +12,7 @@ import cloudinary from 'cloudinary';
 
 
 
-
+app.use('/api/v1/users' , authenticateUser, userRouter);
 
 
 app.get('*', (req, res) => {
