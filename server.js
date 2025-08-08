@@ -20,6 +20,17 @@ app.get('*', (req, res) => {
 });
 
 
+app.use(errorHandelerMiddleware);
+
+
+try {
+    await mongoose.connect(process.env.MONGO_URL)
+    app.listen(PORT, () => {
+        console.log(`Server is running on ${PORT}`);
+      });
+}catch(error) {
+    console.log(error);
+}
 
 
 
