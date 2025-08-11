@@ -13,24 +13,13 @@ import cloudinary from 'cloudinary';
 
 
 app.use('/api/v1/users' , authenticateUser, userRouter);
-
+app.use('/api/v1/waste', collectedWasteRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './Client/dist', 'index.html'));
 });
 
 
-app.use(errorHandelerMiddleware);
-
-
-try {
-    await mongoose.connect(process.env.MONGO_URL)
-    app.listen(PORT, () => {
-        console.log(`Server is running on ${PORT}`);
-      });
-}catch(error) {
-    console.log(error);
-}
 
 
 
